@@ -10,7 +10,7 @@ export const InputSearch = () => {
         id="search"
         type="text"
         placeholder="Buscar participante..."
-        className="bg-transparent flex-1 outline-none"
+        className="bg-transparent flex-1 outline-none border-0 p-0 text-sm"
       />
     </div>
   );
