@@ -1,3 +1,9 @@
-export function App() {
-  return <h1>Hello World</h1>;
-}
+import { Header } from "@/components/header";
+
+export const App = () => {
+  return (
+    <div className="max-w-[1216px] mx-auto py-5 flex flex-col gap-5">
+      <Header />
+    </div>
+  );
+};
