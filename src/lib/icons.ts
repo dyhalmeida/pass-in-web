@@ -1,1 +1,1 @@
-export { Search } from 'lucide-react'
+export { Search, MoreHorizontal, ChevronLeft, ChevronsLeft, ChevronRight, ChevronsRight } from 'lucide-react'
