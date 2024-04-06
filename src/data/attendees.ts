@@ -1,6 +1,14 @@
 import { faker } from "@/lib/faker";
 
-export const attendees = Array.from({ length: 200 }).map(() => ({
+export interface IAttendee {
+  id: number;
+  name: string;
+  email: string;
+  createdAt: Date;
+  checkedInAt: Date;
+}
+
+export const attendees: IAttendee[] = Array.from({ length: 200 }).map(() => ({
   id: faker.number.int({ min: 1000, max: 2000 }),
   name: faker.name.fullName(),
   email: faker.internet.email().toLocaleLowerCase(),
