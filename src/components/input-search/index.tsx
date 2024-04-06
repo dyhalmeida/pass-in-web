@@ -14,7 +14,7 @@ export const InputSearch = (props: IInputSearch) => {
         type="text"
         placeholder="Buscar participante..."
         {...props}
-        className="bg-transparent flex-1 outline-none border-0 p-0 text-sm"
+        className="bg-transparent flex-1 outline-none border-0 p-0 text-sm focus:ring-0"
       />
     </div>
   );
