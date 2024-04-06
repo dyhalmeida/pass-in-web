@@ -13,32 +13,51 @@ import { TableHeader } from "@/components/table/table-header";
 import { TableRow } from "@/components//table/table-row";
 import { TableCell } from "@/components//table/table-cell";
 import { IconButton } from "@/components//icon-button";
-import { attendees } from "@/data/attendees";
+import { IAttendee, attendees as attendeesMock } from "@/data/attendees";
 
 export const AttendeeList = () => {
   const [, setSearch] = useState("");
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(() => {
+    const url = new URL(window.location.toString());
+
+    if (url.searchParams.has("page")) {
+      return Number(url.searchParams.get("page"));
+    }
+
+    return 1;
+  });
+  const [attendees] = useState<IAttendee[]>(attendeesMock);
 
   const totalPages = Math.ceil(attendees.length / 10);
+
+  function setCurrentPage(page: number) {
+    const url = new URL(window.location.toString());
+
+    url.searchParams.set("page", String(page));
+
+    window.history.pushState({}, "", url);
+
+    setPage(page);
+  }
 
   function onSearchInputChanged(event: ChangeEvent<HTMLInputElement>) {
     setSearch(event.target.value);
   }
 
   function goToFirstPage() {
-    setPage(1);
+    setCurrentPage(1);
   }
 
   function goToLastPage() {
-    setPage(totalPages);
+    setCurrentPage(totalPages);
   }
 
   function goToPreviousPage() {
-    setPage(page - 1);
+    setCurrentPage(page - 1);
   }
 
   function goToNextPage() {
-    setPage(page + 1);
+    setCurrentPage(page + 1);
   }
 
   return (
